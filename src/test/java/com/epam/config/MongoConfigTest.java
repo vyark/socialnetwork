@@ -11,7 +11,6 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class MongoConfigTest {
     private MongoConfig mongoConfig = new MongoConfig();
 
-    @Ignore
     @Test
     public void testMongoConfig() {
         MongoClient client = mongoConfig.mongo();
@@ -19,7 +18,6 @@ public class MongoConfigTest {
         assertNotNull(client);
     }
 
-    @Ignore
     @SneakyThrows
     @Test
     public void testMongoTemplate() {
