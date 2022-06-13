@@ -1,0 +1,49 @@
+[
+  {
+    $unwind: $messages
+  },
+  {
+    $addFields: {
+      creation_date: {
+        $dateToString: {
+          date: {
+            $toDate: $messages.creation_date
+          },
+          format: "%Y-%m-%d"
+        }
+      }
+    }
+  },
+  {
+    $group: {
+      _id: $creation_date,
+      value: {
+        $count: $creation_date
+      }
+    }
+  },
+  {
+    $addFields: {
+      creation_date: {
+        $dayOfWeek: {
+          $toDate: $_id
+        }
+      }
+    }
+  },
+  {
+    $group: {
+      _id: $creation_date,
+      average: {
+        $avg: $value
+      }
+    }
+  },
+  {
+    $project: {
+      _id: 0,
+      weekDay: $_id,
+      average: 1
+    }
+  }
+]
