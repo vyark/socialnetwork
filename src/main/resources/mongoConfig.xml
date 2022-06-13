@@ -24,9 +24,6 @@
 
     <mongo:repositories base-package="com.epam.repository" mongo-template-ref="mongoTemplate" />
 
-<!--    <bean class="com.epam.event.CascadeSaveMongoEventListener">-->
-<!--    </bean>-->
-
     <mongo:mapping-converter id="mongoConverter" base-package="com.epam.converter">
         <mongo:custom-converters base-package="com.epam.converter" />
     </mongo:mapping-converter>

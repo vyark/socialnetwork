@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserService {
     public User getUser(Long id) {
         return (User) userRepository.findById(id)
                 .orElseThrow(() ->
-                        new Exception(String.format("User with id = %s is not found", id)));
+                        new IllegalStateException(String.format("User with id = %s is not found", id)));
     }
 
     @Override
